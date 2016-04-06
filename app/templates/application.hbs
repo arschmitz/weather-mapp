@@ -1,11 +1,6 @@
 {{#leaflet-map class="background--map" zoom="8" lat=userLocation.latitude lng=userLocation.longititude}}
-	{{#layer-group name="tilelayer#1" baselayer=true default=true}}
-		{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-	{{/layer-group}}
-	{{#layer-group name="tilelayer#2" default=true}}
-		{{owm-layer}}
-	{{/layer-group}}
-	{{layer-control}}
+	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+	{{owm-layer "wind" url='' showLegend=true opacity=0.5}}
 {{/leaflet-map}}
 {{place-autocomplete-field
   value= model.address

@@ -6,7 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('3-day-forecast');
+  this.route('3-day-forecast', {path: '/:state/:city/3-day-forecast'});
 });
 
 export default Router;
