@@ -1,3 +1,9 @@
+body {
+	font-family: 'Droid Sans', sans-serif;
+}
+* {
+	box-sizing: border-box;
+}
 .background--map {
 	position: absolute !important;
 	top: 0;
@@ -9,9 +15,113 @@
 .place-autocomplete--input {
 	position: absolute;
 	top: 1em;
-	left: 50%;
-	width: 300px;
+	right: 1em;
+	width: 200px;
 	margin-left: -150px;
 	font-size: 1em;
-	padding: 1em;
+	padding: .5em;
+}
+.display {
+	top: 4em;
+	z-index: 9999;
+	position: absolute;
+	left: 0;
+	right: 0;
+	pointer-events: none;
+}
+.display--box {
+	pointer-events: auto;
+}
+.display--title {
+	text-align: center;
+	background: rgba(70, 70, 70, .7);
+	font-size: 1em;
+	display: block;
+	width: 100%;
+	padding: .2em;
+	color: #fff;
+}
+
+.forecast-day--box {
+	position: relative;
+	background: rgba(255, 255, 255, .7);
+	margin-bottom: 1em;
+	text-align: center;
+	padding: .5em;
+	padding-top: 1.9em;
+	font-size: .7em;
+}
+.forecast-day--icon img {
+	width: 20%;
+}
+.forecast-text--box {
+	background: rgba(255, 255, 255, .7);
+	padding: .5em;
+	margin: .5em;
+	position: relative;
+	padding-top: 1.9em;
+	padding-bottom: .4em;
+	font-size: .7em;
+}
+.forecast-text--icon {
+	float: left;
+}
+.forecast-text--icon img {
+	width: 30px;
+}
+.forecast-text--title,
+.forecast-day--title {
+	background: rgba(70, 70, 70, .7);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	padding: .2em;
+	color: #fff;
+	vertical-align: middle;
+}
+.forecast-text--desc {
+	margin-top: .2em;
+	padding-left: 2.5em;
+	color: #333;
+}
+.pac-container {
+	z-index: 9999;
+}
+/* sm */
+@media only screen and (min-width: 48em) {
+	.forecast-day--box,
+	.forecast-text--box {
+		font-size: .8em;
+	}
+	.forecast-day--temp {
+		margin-top: .5em;
+		font-size: .9em;
+	}
+	.display--title {
+		font-size: 1.5em;
+	}
+	.place-autocomplete--input {
+		width: 400px;
+	}
+	.forecast-day--icon img {
+		width: 30%;
+	}
+}
+/* md */
+@media only screen and (min-width: 64em) {
+	.forecast-day--box,
+	.forecast-text--box {
+		font-size: .8em;
+	}
+	.forecast-day--icon img {
+		width: 40%;
+	}
+}
+/* lg */
+@media only screen and (min-width: 75em) {
+	.forecast-day--box,
+	.forecast-text--box {
+		font-size: .9em;
+	}
 }
