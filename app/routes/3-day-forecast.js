@@ -4,7 +4,8 @@ export default Ember.Route.extend({
 	model(params) {
 		return Ember.RSVP.hash({
 			forecast: this.store.findRecord('forecast', params.state + '/' + params.city),
-			geocode: this.store.findRecord('geocode', params.city + ' ' + params.state)
+			geocode: this.store.findRecord('geocode', params.city + ' ' + params.state),
+			location: { name: `${params.city}, ${params.state}` }
 		});
 	},
 	afterModel(model) {
