@@ -1,0 +1,25 @@
+<div class="display">
+	<div class="row display--box">
+		<div class="col-xs-12"><h1 class="display--title">Satellite Imagery</h1></div>
+	</div>
+	<div class="row around-xs">
+		<div class="col-xs-12 col-md-6 col-lg-3 display--box satellite--wrap">
+			<div class="satellite--box">
+				<div class="satellite--title">Satellite Image</div>
+				<img src="{{model.satellite.image_url}}" alt="satellite image">
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6 col-lg-3 display--box satellite--wrap">
+			<div class="satellite--box">
+				<div class="satellite--title">Infrared Satellite Image</div>
+				<img src="{{model.satellite.image_url_ir4}}" alt="satellite image">
+			</div>
+		</div>
+		<div class="col-xs-12 col-md-6 col-lg-3 display--box satellite--wrap">
+			<div class="satellite--box">
+				<div class="satellite--title">Visibile Satellite Image</div>
+				<img src="{{model.satellite.image_url_vis}}" alt="satellite image">
+			</div>
+		</div>
+	</div>
+</div>
