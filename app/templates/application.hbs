@@ -1,4 +1,4 @@
-{{#leaflet-map class="background--map" zoom="6" lat=userLocation.latitude lng=userLocation.longititude}}
+{{#leaflet-map class="background--map" zoom="6" onMoveend=(action "updateCenter") lat=userLocation.latitude lng=userLocation.longititude}}
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
 	{{owm-layer "precipitation" showLegend=true opacity=0.5 baseUrl="http://owm.arschmitz.me?url=http://{s}.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
 {{/leaflet-map}}
