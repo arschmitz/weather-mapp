@@ -1,1 +1,9 @@
+{{#modal-dialog close='toggleTranslucent'
+                translucentOverlay=true
+                container-class=customContainerClassNames
+                overlay-class='custom-styles-modal'}}
+  <h1>This is an expiramental map based weather app</h1>
+  <p>This app uses Open Weather Map tile servers which are currently experiencing heavy load which may make weather overlays load slowly or incompletly. Open weather map is working on this problem</p>
+  <button {{action 'toggleTranslucent'}}>Close</button>
+{{/modal-dialog}}
 {{outlet}}

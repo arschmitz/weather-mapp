@@ -10,18 +10,37 @@ export default Ember.Controller.extend({
     updateCenter(e) {
       let center = e.target.getCenter();
       this.store.findRecord('rgeocode', `${center.lat},${center.lng}`).then((rgeo) => {
-        var address = rgeo.get('formatted_address');
+        let address = rgeo.get('address_components');
+        let country;
+        let state;
+        let city;
+        let route;
         if ( address ) {
-          var city = address.split(',')[1].trim();
-          var stateZip = (address.split(',')[2] || address.split(',')[1]).trim();
-          var state = stateZip.split(' ')[0].trim();
-          var country = (address.split(',')[3] || address.split(',')[2] || address.split(',')[1]).trim();
-
-          state = country === 'USA' ? state : country;
+          address.forEach((component,i) => {
+            let type = component.types[0];
+            switch(type) {
+              case 'country':
+                country = component.short_name;
+                break;
+              case 'administrative_area_level_1':
+                state = component.long_name;
+                break;
+              case 'locality':
+                city = component.long_name;
+            }
+          });
           this.userLocation.name = `${city}, ${state}`;
-          this.transitionToRoute(`/forecast/${state}/${city}/3-day-forecast`);
+          console.log(this.userLocation.name);
+          route = city ?
+            `/forecast/${country}/${state}/${city}/3-day-forecast` :
+            `/forecast/${country}/${state}/3-day-forecast`;
+          this.transitionToRoute(route);
         }
       });
+    },
+    layerControlEvent(event) {
+      console.log(event);
+      return true;
     }
   }
 });

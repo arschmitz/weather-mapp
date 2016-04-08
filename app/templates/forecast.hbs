@@ -1,6 +1,6 @@
 <div class="display">
 	<div class="row display--box">
-		<div class="col-xs-12"><h1 class="display--title">{{model.location.name}} - 3 Day Forecast</h1></div>
+		<div class="col-xs-12"><h1 class="display--title">{{model.meta.name}} - {{model.meta.days}} Day Forecast</h1></div>
 	</div>
 	<div class="row around-xs">
 		<div class="col-md-3 col-xs-12">
@@ -36,5 +36,15 @@
 			{{/each}}
 			</div>
 		</div>
+		{{#unless model.forecast.days.length}}
+		<div class="row">
+			<div class="forecast-text--box col-xs-12 display--box">
+				<div class="forecast-text--title">Error</div>
+				<div class="forecast-text--desc">
+					No Weather Data Found!
+				</div>
+			</div>
+		</div>
+		{{/unless}}
 	</div>
 </div>

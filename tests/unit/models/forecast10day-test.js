@@ -1,6 +1,6 @@
 import { moduleForModel, test } from 'ember-qunit';
 
-moduleForModel('rgeocode', 'Unit | Model | rgeocode', {
+moduleForModel('forecast10day', 'Unit | Model | forecast10day', {
   // Specify the other units that are required for this test.
   needs: []
 });

@@ -6,7 +6,8 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('3-day-forecast', {path: '/forecast/:state/:city/3-day-forecast'});
+  this.route('forecast', {path: '/forecast/:country/:state/:name'});
+  this.route('forecast', {path: '/forecast/:country/:state/:city/:name'});
   this.route('satellite', {path: '/forecast/:state/:city/satellite'});
 });
 
