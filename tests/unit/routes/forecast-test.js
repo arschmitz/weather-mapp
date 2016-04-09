@@ -1,6 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('route:3-day-forecast', 'Unit | Route | 3 day forecast', {
+moduleFor('route:forecast', 'Unit | Route | forecast', {
   // Specify the other units that are required for this test.
   // needs: ['controller:foo']
 });

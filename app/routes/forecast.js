@@ -5,7 +5,6 @@ export default Ember.Route.extend({
 		let forecastId = Object.keys(params).map((param)=>{
 			return params[param];
 		}).join('/');
-		console.log(forecastId)
 		let geocodeId = params.city ?
 			`${params.country}, ${params.state}, ${params.city}` :
 			`${params.country}, ${params.state}`;

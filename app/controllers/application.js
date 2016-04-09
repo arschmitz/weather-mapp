@@ -15,10 +15,11 @@ export default Ember.Controller.extend({
         let state;
         let city;
         let route;
-        if ( address ) {
-          address.forEach((component,i) => {
-            let type = component.types[0];
-            switch(type) {
+        if (address) {
+          address.forEach((component) => {
+            let [type] = component.types;
+            // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+            switch (type) {
               case 'country':
                 country = component.short_name;
                 break;
@@ -28,9 +29,9 @@ export default Ember.Controller.extend({
               case 'locality':
                 city = component.long_name;
             }
+            // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
           });
           this.userLocation.name = `${city}, ${state}`;
-          console.log(this.userLocation.name);
           route = city ?
             `/forecast/${country}/${state}/${city}/3-day-forecast` :
             `/forecast/${country}/${state}/3-day-forecast`;

@@ -10,10 +10,10 @@ export default Ember.Route.extend({
       let state;
       let city;
       let route;
-      if ( address ) {
-        address.forEach((component,i) => {
-          let type = component.types[0];
-          switch(type) {
+      if (address) {
+        address.forEach((component) => {
+          let [type] = component.types;
+          switch (type) {
             case 'country':
               country = component.short_name;
               break;
