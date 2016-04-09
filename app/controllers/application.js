@@ -11,10 +11,13 @@ export default Ember.Controller.extend({
       let center = e.target.getCenter();
       this.store.findRecord('rgeocode', `${center.lat},${center.lng}`).then((rgeo) => {
         let address = rgeo.get('address_components');
+        let model = window.location.href.split("/");
         let country;
         let state;
         let city;
         let route;
+        model = model.length >= 5 ? model[model.length -1] : '3-day-forecast';
+
         if (address) {
           address.forEach((component) => {
             let [type] = component.types;
@@ -33,8 +36,8 @@ export default Ember.Controller.extend({
           });
           this.userLocation.name = `${city}, ${state}`;
           route = city ?
-            `/forecast/${country}/${state}/${city}/3-day-forecast` :
-            `/forecast/${country}/${state}/3-day-forecast`;
+            `/forecast/${country}/${state}/${city}/${model}` :
+            `/forecast/${country}/${state}/${model}`;
           this.transitionToRoute(route);
         }
       });
