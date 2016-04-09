@@ -1,0 +1,11 @@
+import DS from 'ember-data';
+
+export default DS.RESTSerializer.extend({
+	normalizeResponse(store, primaryModelClass, payload, id) {
+		payload.hourly = {
+			id: id,
+			hours: payload.hourly_forecast || {}
+		};
+		return this._super(...arguments);
+	}
+});
