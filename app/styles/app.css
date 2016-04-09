@@ -4,13 +4,25 @@ body {
 * {
 	box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 14px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    background-color: rgba(70,70,70,.5);
+    box-shadow: 2px 2px 0px #ccc;
+}
+body {
+	overflow-x: hidden;
+}
 .background--map {
-	position: absolute !important;
 	top: 0;
 	left: 0;
 	right: 0;
 	bottom: 0;
 	z-index: 0;
+	position: fixed !important;
 }
 .place-autocomplete--input {
 	position: absolute;
@@ -41,7 +53,18 @@ body {
 	padding: .2em;
 	color: #fff;
 }
-
+.hourly--box {
+	position: relative;
+	background: rgba(255, 255, 255, .7);
+	margin-bottom: 1em;
+	text-align: center;
+	padding: .2em;
+	font-size: .6em;
+	border-right: 1px solid #ccc;
+}
+.hourly--icon {
+	width: 20px;
+}
 .forecast-day--box {
 	position: relative;
 	background: rgba(255, 255, 255, .7);
@@ -135,6 +158,12 @@ body {
 	}
 	.forecast-day--icon img {
 		width: 40%;
+	}
+	.hourly--box {
+		font-size: .9em;
+	}
+	.hourly--icon {
+		width: auto;
 	}
 }
 /* lg */

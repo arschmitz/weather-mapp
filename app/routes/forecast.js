@@ -15,7 +15,7 @@ export default Ember.Route.extend({
 		return Ember.RSVP.hash({
 			forecast: this.store.findRecord(forecastModel, forecastId),
 			geocode: this.store.findRecord('geocode', geocodeId),
-			meta: { name: title }
+			meta: { name: title, days: params.name.split('-')[0] }
 		});
 	},
 	afterModel(model) {

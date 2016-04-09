@@ -11,9 +11,25 @@ export default Ember.Route.extend({
     let title = params.city ?
       `${params.city}, ${params.state}, ${params.country}`:
       `${params.state}, ${params.country}`;
+    let imgParams = '&num=8&timelabel=1&smooth=1&borders=1&basemap=1';
+    let imgBase = 'http://api.wunderground.com/api/d32d70d113b63652/';
     return Ember.RSVP.hash({
-      satellite: this.store.findRecord('satellite', forecastId),
-      geocode: this.store.findRecord('geocode', geocodeId)
+      images: {
+        'radar': {
+          name: 'Radar',
+          url: `${imgBase}animatedradar/q/${params.country}/${params.state}/${params.city}.gif?newmaps=1&noclutter=1${imgParams}`
+        },
+        'satellite': {
+          name: 'Infrared Satelite',
+          url: `${imgBase}animatedsatellite/q/${params.country}/${params.state}/${params.city}.gif?key=sat_ir4_bottom${imgParams}`
+        },
+        'visibleradar': {
+          name: 'Visible Satelite',
+          url: `${imgBase}animatedsatellite/q/${params.country}/${params.state}/${params.city}.gif?key=sat_vis_bottom${imgParams}`
+        }
+      },
+      geocode: this.store.findRecord('geocode', geocodeId),
+      meta: { name: title }
     });
   },
   afterModel(model) {
