@@ -29,15 +29,27 @@ body {
 	width: 100%;
 }
 .welcome--title {
-	font-size: 3em;
+	font-size: 1.5em;
 	margin: 0;
+}
+.welcome--dialog {
+	background: #fff;
+	padding: 2em;
+	font-size: .8em;
+	box-shadow: 15px 15px 7px rgba(0,0,0,.5);
+	margin-right: 2em;
+	margin-left: 2em;
+}
+.welcome--description {
+	font-size: 1.2em;
 }
 .api--key {
 	padding: .5em;
 	width: 200px;
+	border: 1px inset #ccc;
+	margin-right: 1em;
 }
 .api--button {
-	margin-left: 1em;
 	font-size: 1em;
 	padding: .25em;
 	border-radius: 0;
@@ -54,11 +66,7 @@ body {
 	text-shadow: 1px 1px 0 rgba(255,255,255,.5),-1px -1px 0 rgba(0,0,0,.5);
 	font-family: 'Yellowtail', cursive;
 }
-.welcome--dialog {
-	background: #fff;
-	padding: 2em;
-	box-shadow: 15px 15px 7px rgba(0,0,0,.5);
-}
+
 .background--map {
 	top: 0;
 	left: 0;
@@ -143,17 +151,19 @@ body {
 }
 .sitetitle {
 	position: fixed;
-	top: -10px;
+	bottom: 10px;
 	text-align: center;
-	width: 500px;
 	margin: 0;
-	margin-left: -250px;
-	left: 50%;
-	font-size: 4em;
+	font-size: 2em;
 	color: rgba(0,254,253,.6);
 	font-weight: bold;
 	text-shadow: 1px 1px 0 rgba(255,255,255,.5),-1px -1px 0 rgba(0,0,0,.5);
 	font-family: 'Yellowtail', cursive;
+	z-index: 9999;
+	left: 0;
+	right: 0;
+	text-align: center;
+	background: rgba(255,255,255,.8);
 }
 .astronomy--text {
 	padding: 2em;
@@ -194,7 +204,7 @@ body {
 }
 .dashboard--forecast,
 .dashboard--button {
-	font-size: 2.2em;
+	font-size: 1em;
 	color: rgba(0,254,253,.6);
 	text-shadow: -1px -1px 0 rgba(0,0,0,.5);
 	font-family: 'Yellowtail', cursive;
@@ -202,8 +212,8 @@ body {
 	text-align: center;
 	border: none;
 }
-.dashboard--forecast {
-	font-size: 1.5em;
+.dashboard--conditions {
+	font-size: .8em;
 }
 .dashboard--button,
 .dashboard--forecast,
@@ -339,6 +349,9 @@ body {
 	position: relative;
 	height: 300px;
 }
+.body {
+	padding-bottom: 4em;
+}
 /* sm */
 @media only screen and (min-width: 48em) {
 	.forecast-day--box,
@@ -376,6 +389,21 @@ body {
 	}
 	.hourly--icon {
 		width: auto;
+	}
+	.dashboard--forecast {
+		font-size: 1em;
+	}
+	.dashboard--button {
+		font-size: 1.5em;
+	}
+	.body {
+		padding-bottom: 0;
+	}
+	.sitetitle {
+		background: none;
+		position: absolute;
+		top: 10px;
+		font-size: 2.5em;
 	}
 }
 /* lg */

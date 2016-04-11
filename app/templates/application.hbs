@@ -22,11 +22,10 @@
 {{#liquid-tether
 	to="dashboard"
     target="body"
-    attachment="middle center"
-    targetAttachment="middle center"
-    tetherClass="welcome--dialog"
+    attachment="top center"
+    targetAttachment="top center"
   	overlayClass="welcome--overlay"
-  }}
+  }}<div class="welcome--dialog">
       <h1 class="welcome--title">Welcome to <span class="logo">Weather MApp!</span></h1>
       <h2 class="welcome--description">
         Weather MApp is a Proof of concept map based weather app.
@@ -37,12 +36,17 @@
 		<li>By entering into the search box at the top to search for a location</li>
 		<li>By moving and interacting with the map the currently displayed information will update</li>
 	</ul>
+	<h3>Note on scrolling:</h3>
+	<p>Because of the map based nature of this app scrolling with trackpad or mouse wheel is not recomended as it may cause unexpected zoom.</p>
+	<p>On touch screen devices to avoid moing the map make sure you start all scrolling motions on a content box and not the background</p>
+	<h3>Note on API usage:</h3>
 	<p>Due to strict api limits imposed by the Wunderground api which powers this site you will need to suply your own api key</p>
-	<p>An api key can be aquired from Wundergroun for free by visiting <a href="https://www.wunderground.com/weather/api/d/login.html" target="_blank">Wunderground Api site</a> and signing up</p>
+	<p>An api key can be aquired from Wunderground for free by visiting <a href="https://www.wunderground.com/weather/api/d/login.html" target="_blank">Wunderground Api site</a> and signing up</p>
 	<p>Enter your key below to continue</p>
 	<label for="apikey">API Key:</label>
 	{{input class="api--key" name="apikey" id="apikey" value=api autofocus=true}}
 	<button class="api--button" {{action "apiSubmit"}}>Continue</button>
+    </div>
     </div>
   {{/liquid-tether}}
   {{/unless}}
