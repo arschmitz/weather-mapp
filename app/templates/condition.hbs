@@ -1,0 +1,29 @@
+<div class="condition--box col-xs-11 col-md-8">
+	<div class="row display--box">
+		<div class="condition--title col-xs-12"><b>Current Conditions:</b> {{model.conditions.current.observation_location.full}}</div>
+		<div class="condition--time col-xs-12">{{model.conditions.current.observation_time}}</div>
+
+		<div class="col-xs-3 condition--iconbox">
+			<img class="condition--icon" src="{{model.conditions.current.icon_url}}" alt="{{model.conditions.current.icon}}">
+		</div>
+		<div class="col-xs-1"></div>
+		<div class="condition--topinfo col-xs-8">
+			<div class="condition--temp"><b>Temperature:</b> {{model.conditions.current.temperature_string}}</div>
+			<div class="condition--wind"><b>Wind:</b> {{model.conditions.current.wind_string}}</div>
+			<div class="condition--windchill"><b>Wind Chill:</b> {{model.conditions.current.windchill_string}}</div>
+		</div>
+		<div class="col-xs-12 col-sm-5 condition--bottom">
+		<div class="condition--weather"><b>Weather:</b> {{model.conditions.current.weather}}</div>
+			<div class="condition--precip"><b>1 hr Precipitation:</b> {{model.conditions.current.precip_1hr_string}}</div>
+			<div class="condition--precip"><b>Precipitation today:</b> {{model.conditions.current.precip_today_string}}</div>
+			<div class="condition--dewpoints"><b>Dew Points:</b> {{model.conditions.current.dewpoint_string}}</div>
+		</div>
+		<div class="col-xs-0 col-sm-2"></div>
+		<div class="col-xs-12 col-sm-5 condition--bottom">
+			<div class="condition--feelslike"><b>Feels Like:</b> {{model.conditions.current.feelslike_string}}</div>
+			<div class="condition--pressure"><b>Pressure:</b> {{model.conditions.current.pressure_trend}}{{model.conditions.current.pressure_in}}in</div>
+			<div class="condition--humidity"><b>Relative Humidity:</b> {{model.conditions.current.relative_humidity}}</div>
+			<div class="condition--visibility"><b>Visibility:</b> {{model.conditions.current.visibility_mi}}mi</div>
+		</div>
+	</div>
+</div>

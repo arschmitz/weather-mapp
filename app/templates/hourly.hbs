@@ -1,21 +1,14 @@
-<div class="display">
-	<div class="row display--box">
-		<div class="col-xs-12"><h1 class="display--title">{{model.meta.name}} - {{model.meta.days}} Hourly Forecast</h1></div>
+{{#each model.hourly.hours as |hour|}}
+<div class="col-xs-2 col-md-1 hourly--box">
+	<div class="hourly--time">
+	{{hour.FCTTIME.weekday_name_abbrev}} - {{hour.FCTTIME.civil}}
 	</div>
-	<div class="row display--box">
-	{{#each model.hourly.hours as |hour|}}
-		<div class="col-xs-2 col-md-1 hourly--box">
-			<div class="hourly--time">
-			{{hour.FCTTIME.weekday_name_abbrev}} - {{hour.FCTTIME.civil}}
-			</div>
-			<img src='{{hour.icon_url}}' alt='{{hour.icon}} icon' class="hourly--icon"/>
-			<div class="hourly--desc">
-				{{hour.wx}}
-			</div>
-			<div class="hourly--temp">
-				{{hour.temp.english}}
-			</div>
-		</div>
-	{{/each}}
+	<img src='{{hour.icon_url}}' alt='{{hour.icon}} icon' class="hourly--icon"/>
+	<div class="hourly--desc">
+		{{hour.wx}}
+	</div>
+	<div class="hourly--temp">
+		{{hour.temp.english}}
 	</div>
 </div>
+{{/each}}

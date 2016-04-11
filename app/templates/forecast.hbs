@@ -1,50 +1,43 @@
-<div class="display">
-	<div class="row display--box">
-		<div class="col-xs-12"><h1 class="display--title">{{model.meta.name}} - {{model.meta.days}} Day Forecast</h1></div>
-	</div>
+<div class="col-md-3 col-xs-12">
 	<div class="row around-xs">
-		<div class="col-md-3 col-xs-12">
-			<div class="row around-xs">
-			{{#each model.forecast.days as |day|}}
-				<div class="col-xs-3 col-sm-2 col-md-5 forecast-day--box display--box">
-					<div class="forecast-day--title">{{day.date.weekday}}</div>
-					<div class="forecast-day--icon">
-						<img src="{{day.icon_url}}" alt="{{icon}}">
-					</div>
-					<div class="forecast-day--desc">
-						{{day.conditions}}
-					</div>
-					<div class="forecast-day--temp">
-						L: {{day.low.fahrenheit}}° H: {{day.high.fahrenheit}}°
-					</div>
-				</div>
-			{{/each}}
+	{{#each model.forecast.days as |day|}}
+		<div class="col-xs-3 col-sm-2 col-md-5 forecast-day--box display--box">
+			<div class="forecast-day--title">{{day.date.weekday}}</div>
+			<div class="forecast-day--icon">
+				<img src="{{day.icon_url}}" alt="{{icon}}">
+			</div>
+			<div class="forecast-day--desc">
+				{{day.conditions}}
+			</div>
+			<div class="forecast-day--temp">
+				L: {{day.low.fahrenheit}}° H: {{day.high.fahrenheit}}°
 			</div>
 		</div>
-		<div class="col-md-9 col-sm-12">
-			<div class="row around-xs">
-			{{#each model.forecast.text as |text|}}
-				<div class="forecast-text--box col-xs-11 col-sm-5 display--box">
-					<div class="forecast-text--title">{{text.title}}</div>
-					<div class="forecast-text--icon">
-						<img src="{{text.icon_url}}" alt="{{text.icon}}">
-					</div>
-					<div class="forecast-text--desc">
-						{{text.fcttext}}
-					</div>
-				</div>
-			{{/each}}
-			</div>
-		</div>
-		{{#unless model.forecast.days.length}}
-		<div class="row">
-			<div class="forecast-text--box col-xs-12 display--box">
-				<div class="forecast-text--title">Error</div>
-				<div class="forecast-text--desc">
-					No Weather Data Found!
-				</div>
-			</div>
-		</div>
-		{{/unless}}
+	{{/each}}
 	</div>
 </div>
+<div class="col-md-9 col-sm-12">
+	<div class="row around-xs">
+	{{#each model.forecast.text as |text|}}
+		<div class="forecast-text--box col-xs-11 col-sm-5 display--box">
+			<div class="forecast-text--title">{{text.title}}</div>
+			<div class="forecast-text--icon">
+				<img src="{{text.icon_url}}" alt="{{text.icon}}">
+			</div>
+			<div class="forecast-text--desc">
+				{{text.fcttext}}
+			</div>
+		</div>
+	{{/each}}
+	</div>
+</div>
+{{#unless model.forecast.days.length}}
+<div class="row">
+	<div class="forecast-text--box col-xs-12 display--box">
+		<div class="forecast-text--title">Error</div>
+		<div class="forecast-text--desc">
+			No Weather Data Found!
+		</div>
+	</div>
+</div>
+{{/unless}}

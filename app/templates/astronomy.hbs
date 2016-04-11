@@ -1,0 +1,19 @@
+<div class="astronomy--box">
+	<div class="moon">
+		<div class="shadow" style="margin-left:{{model.astronomy.moon.percentIlluminated}}%"></div>
+	</div>
+	<div class="astronomy--text">
+		<div class="astronomy--age">
+			Age: {{model.astronomy.moon.ageOfMoon}}
+		</div>
+		<div class="astronomy--phase">
+			Phase: {{model.astronomy.moon.phaseofMoon}}
+		</div>
+		<div class="asstronomy--sunrise">
+			Sunrise: {{model.astronomy.moon.sunrise.hour}}:{{model.astronomy.moon.sunrise.minute}}am
+		</div>
+		<div class="asstronomy--sunset">
+			Sunset: {{model.astronomy.moon.sunset.hour}}:{{model.astronomy.moon.sunset.minute}}pm
+		</div>
+	</div>
+</div>

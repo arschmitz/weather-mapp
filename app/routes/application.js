@@ -1,32 +1,19 @@
 import Ember from 'ember';
+import decode from 'arschmitz-weather/utils/decode-address';
 
 export default Ember.Route.extend({
   geolocation: Ember.inject.service(),
+  setupController() {
+    this.controllerFor('application').set('api', localStorage.apikey || '');
+    this.controllerFor('application').set('showModal', !!localStorage.apikey);
+  },
   actions: {
     placeChanged(val) {
       // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
       let address = val.address_components;
-      let country;
-      let state;
-      let city;
       let route;
       if (address) {
-        address.forEach((component) => {
-          let [type] = component.types;
-          switch (type) {
-            case 'country':
-              country = component.short_name;
-              break;
-            case 'administrative_area_level_1':
-              state = component.long_name;
-              break;
-            case 'locality':
-              city = component.long_name;
-          }
-        });
-        route = city ?
-          `/forecast/${country}/${state}/${city}/3-day-forecast` :
-          `/forecast/${country}/${state}/3-day-forecast`;
+        route = decode(address);
         this.transitionTo(route);
       }
 
@@ -37,6 +24,10 @@ export default Ember.Route.extend({
         });
       });
       // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
+    },
+    apiSubmit() {
+      localStorage.apikey = this.controllerFor('application').get('api');
+      this.controllerFor('application').set('showModal', true);
     }
   }
 });

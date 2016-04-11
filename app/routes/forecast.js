@@ -1,29 +1,18 @@
 import Ember from 'ember';
+import decode from 'arschmitz-weather/utils/decode-model-params';
+import geocode from 'arschmitz-weather/utils/route-geocode';
 
 export default Ember.Route.extend({
-	model(params) {
-		let forecastId = Object.keys(params).map((param)=>{
-			return params[param];
-		}).join('/');
-		let geocodeId = params.city ?
-			`${params.country}, ${params.state}, ${params.city}` :
-			`${params.country}, ${params.state}`;
-		let title = params.city ?
-			`${params.city}, ${params.state}, ${params.country}`:
-			`${params.state}, ${params.country}`;
-		let forecastModel = params.name === "3-day-forecast" ? 'forecast' : 'forecast10day';
-		return Ember.RSVP.hash({
-			forecast: this.store.findRecord(forecastModel, forecastId),
-			geocode: this.store.findRecord('geocode', geocodeId),
-			meta: { name: title, days: params.name.split('-')[0] }
-		});
-	},
-	afterModel(model) {
-		if ( model.geocode ) {
-			this.controllerFor('application').set('userLocation', {
-				latitude: model.geocode.get('geometry').location.lat,
-				longititude: model.geocode.get('geometry').location.lng
-			} );
-		}
-	}
+  model(params) {
+    let modelParams = decode(params);
+    let forecastModel = params.name === '3-day-forecast' ? 'forecast' : 'forecast10day';
+    let title = params.name.replace('-', ' ');
+    this.controllerFor('application').set('title', `${modelParams.title} - ${title}`);
+
+    return Ember.RSVP.hash({
+      forecast: this.store.findRecord(forecastModel, modelParams.forecastId),
+      geocode: this.store.findRecord('geocode', modelParams.geocodeId)
+    });
+  },
+  afterModel: geocode
 });

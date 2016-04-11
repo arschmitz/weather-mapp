@@ -1,6 +1,6 @@
 import DS from 'ember-data';
 
-export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
+export default DS.RESTSerializer.extend({
   normalizeResponse(store, primaryModelClass, payload, id) {
     payload.forecast = payload.forecast || { simpleforecast: { }, 'txt_forecast': { }, date: { } };
 

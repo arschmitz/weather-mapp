@@ -1,0 +1,86 @@
+{{#if model.alert.alerts.length}}
+<div class="col-xs-12">
+	<div class="row around-xs">
+		<div class="col-xs-11 dashboard-alert--box">
+			<div class="dashboard-alert--count">{{model.alert.alerts.length}}</div>
+			<marquee class="dashboard-alert--marquee">
+			{{#each model.alert.alerts as |alert|}}
+				{{alert.raw}}
+			{{/each}}
+			</marquee>
+		</div>
+	</div>
+</div>
+{{/if}}
+<div class="col-xs-2">
+	<div class="row around-xs">
+	{{#each model.forecast.days as |day|}}
+		<div class="col-xs-3 col-sm-2 col-md-6 forecast-day--box display--box">
+			<div class="forecast-day--title">{{day.date.weekday}}</div>
+			<div class="forecast-day--icon">
+				<img src="{{day.icon_url}}" alt="{{icon}}">
+			</div>
+			<div class="forecast-day--desc">
+				{{day.conditions}}
+			</div>
+			<div class="forecast-day--temp">
+				L: {{day.low.fahrenheit}}° H: {{day.high.fahrenheit}}°
+			</div>
+		</div>
+	{{/each}}
+	</div>
+</div>
+<div class="col-xs-3">
+	<div class="col-xs-12">
+		<div class="row around-xs">
+			<div class="condition--title col-xs-10">Forecasts</div>
+		</div>
+	</div>
+	{{#each model.forecasts as |button|}}
+	<div class="col-xs-12">
+		<div class="row around-xs">
+			<button {{action "navigate" button.model}} class="dashboard--forecast col-xs-10 display--box">{{button.name}}</button>
+		</div>
+	</div>
+	{{/each}}
+</div>
+<div class="col-xs-5">
+	<div class="row display--box">
+		<div class="condition--title col-xs-12"><b>Current Conditions:</b> {{model.conditions.current.observation_location.full}}</div>
+		<div class="condition--time col-xs-12">{{model.conditions.current.observation_time}}</div>
+
+		<div class="col-xs-3 condition--iconbox">
+			<img class="condition--icon" src="{{model.conditions.current.icon_url}}" alt="{{model.conditions.current.icon}}">
+		</div>
+		<div class="col-xs-1"></div>
+		<div class="condition--topinfo col-xs-8">
+			<div class="condition--temp"><b>Temperature:</b> {{model.conditions.current.temperature_string}}</div>
+			<div class="condition--wind"><b>Wind:</b> {{model.conditions.current.wind_string}}</div>
+			<div class="condition--windchill"><b>Wind Chill:</b> {{model.conditions.current.windchill_string}}</div>
+		</div>
+		<div class="col-xs-12 col-sm-5 condition--bottom">
+		<div class="condition--weather"><b>Weather:</b> {{model.conditions.current.weather}}</div>
+			<div class="condition--precip"><b>1 hr Precipitation:</b> {{model.conditions.current.precip_1hr_string}}</div>
+			<div class="condition--precip"><b>Precipitation today:</b> {{model.conditions.current.precip_today_string}}</div>
+			<div class="condition--dewpoints"><b>Dew Points:</b> {{model.conditions.current.dewpoint_string}}</div>
+		</div>
+		<div class="col-xs-0 col-sm-2"></div>
+		<div class="col-xs-12 col-sm-5 condition--bottom">
+			<div class="condition--feelslike"><b>Feels Like:</b> {{model.conditions.current.feelslike_string}}</div>
+			<div class="condition--pressure"><b>Pressure:</b> {{model.conditions.current.pressure_trend}}{{model.conditions.current.pressure_in}}in</div>
+			<div class="condition--humidity"><b>Relative Humidity:</b> {{model.conditions.current.relative_humidity}}</div>
+			<div class="condition--visibility"><b>Visibility:</b> {{model.conditions.current.visibility_mi}}mi</div>
+		</div>
+	</div>
+</div>
+<div class="col-xs-12">
+	<div class="row">
+	{{#each model.menu as |button|}}
+	<div class="col-xs-4">
+		<div class="row around-xs">
+			<button {{action "navigate" button.model}} class="dashboard--button col-xs-10 display--box">{{button.name}}</button>
+		</div>
+	</div>
+	{{/each}}
+	</div>
+</div>

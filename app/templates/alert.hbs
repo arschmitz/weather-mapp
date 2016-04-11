@@ -1,0 +1,21 @@
+{{#if model.alert.alerts.length}}
+{{#each model.alert.alerts as |alr|}}
+<div class="alert--box col-xs-10 display--box">
+	<div class="alert--title">{{alr.description}}</div>
+	<div class="alert--date">{{alr.date}}</div>
+	<div class="alert--desc">
+		{{{alr.message}}}
+	</div>
+	<div class="alert--expires">Expires: {{alr.expires}}</div>
+</div>
+{{/each}}
+{{else}}
+<div class="row">
+	<div class="forecast-text--box col-xs-12 display--box">
+		<div class="forecast-text--title">Error</div>
+		<div class="forecast-text--desc">
+			No Current Alerts!
+		</div>
+	</div>
+</div>
+{{/if}}

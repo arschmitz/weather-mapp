@@ -5,10 +5,9 @@ import geocode from 'arschmitz-weather/utils/route-geocode';
 export default Ember.Route.extend({
   model(params) {
     let modelParams = decode(params);
-    this.controllerFor('application').set('title', `${modelParams.title} - Hourly Forecast`);
-
+    this.controllerFor('application').set('title', `${modelParams.title} - Weather Webcams`);
     return Ember.RSVP.hash({
-      hourly: this.store.findRecord('hourly', modelParams.forecastId),
+      webcams: this.store.findRecord('webcam', modelParams.forecastId),
       geocode: this.store.findRecord('geocode', modelParams.geocodeId)
     });
   },

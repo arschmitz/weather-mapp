@@ -1,7 +1,8 @@
 {{#leaflet-map class="background--map" zoom="6" onMoveend=(action "updateCenter") lat=userLocation.latitude lng=userLocation.longititude}}
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
-	{{owm-layer "precipitation" showLegend=true opacity=0.5 baseUrl="http://owm.arschmitz.me?url=http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{owm-layer "precipitation" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
 {{/leaflet-map}}
+<h1 class="sitetitle">Weather MApp</h1>
 {{place-autocomplete-field
   value= model.address
   disable=false
@@ -11,5 +12,37 @@
   placeChangedCallback='placeChanged'
   types='(cities)'
 }}
-
-{{outlet}}
+<div class="display">
+	<div class="row display--box">
+		<div class="col-xs-12"><h1 class="display--title">{{title}}</h1></div>
+	</div>
+	{{liquid-outlet class="row around-xs" containerless=true}}
+</div>
+{{#unless showModal}}
+{{#liquid-tether
+	to="dashboard"
+    target="body"
+    attachment="middle center"
+    targetAttachment="middle center"
+    tetherClass="welcome--dialog"
+  	overlayClass="welcome--overlay"
+  }}
+      <h1 class="welcome--title">Welcome to <span class="logo">Weather MApp!</span></h1>
+      <h2 class="welcome--description">
+        Weather MApp is a Proof of concept map based weather app.
+      </h2>
+      <div class="welcome--instructions">
+	<h3>There are 2 main ways which you interact with <span class="logo">Weather MApp</span></h3>
+	<ul>
+		<li>By entering into the search box at the top to search for a location</li>
+		<li>By moving and interacting with the map the currently displayed information will update</li>
+	</ul>
+	<p>Due to strict api limits imposed by the Wunderground api which powers this site you will need to suply your own api key</p>
+	<p>An api key can be aquired from Wundergroun for free by visiting <a href="https://www.wunderground.com/weather/api/d/login.html" target="_blank">Wunderground Api site</a> and signing up</p>
+	<p>Enter your key below to continue</p>
+	<label for="apikey">API Key:</label>
+	{{input class="api--key" name="apikey" id="apikey" value=api autofocus=true}}
+	<button class="api--button" {{action "apiSubmit"}}>Continue</button>
+    </div>
+  {{/liquid-tether}}
+  {{/unless}}
