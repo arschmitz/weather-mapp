@@ -44,9 +44,9 @@ $xl: 2em;
 	vertical-align: middle;
 	position: relative;
 	pointer-events: auto;
+	margin-bottom: 1em;
 }
 .box {
-	margin-top: 1em;
 	margin-bottom: 1em;
 	background: $tWhite;
 	padding: .5em;
@@ -79,6 +79,7 @@ $xl: 2em;
 	text-shadow: 1px 1px 0 #999999;
 	background: $tWhite;
 	pointer-events: auto;
+	margin-bottom: 1em;
 }
 
 // Resets
