@@ -1,11 +1,13 @@
 {{#if model.tide.tideSummary.length}}
 {{#each model.tide.tideSummary as |tide|}}
-<div class="tide--box col-xs-1">
+<div class="col-md-2 col-xs-12 col-sm-6">
 	<div class="tide--type">{{tide.data.type}}</div>
-	{{#if tide.data.height}}
-	<div class="tide--height">{{tide.data.height}}</div>
-	{{/if}}
-	<div class="tide--date">{{tide.date.pretty}}</div>
+	<div class="tide--box">
+		{{#if tide.data.height}}
+		<div class="tide--height">{{tide.data.height}}</div>
+		{{/if}}
+		<div class="tide--date">{{tide.date.pretty}}</div>
+	</div>
 </div>
 {{/each}}
 {{else}}

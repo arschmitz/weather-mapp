@@ -1,14 +1,16 @@
 {{#each model.hourly.hours as |hour|}}
-<div class="col-xs-2 col-md-1 hourly--box">
-	<div class="hourly--time">
-	{{hour.FCTTIME.weekday_name_abbrev}} - {{hour.FCTTIME.civil}}
-	</div>
-	<img src='{{hour.icon_url}}' alt='{{hour.icon}} icon' class="hourly--icon"/>
-	<div class="hourly--desc">
-		{{hour.wx}}
-	</div>
-	<div class="hourly--temp">
-		{{hour.temp.english}}
+<div class="col-xs-2 col-md-1">
+	<div class="hourly--box">
+		<div class="hourly--time">
+		{{hour.FCTTIME.weekday_name_abbrev}} - {{hour.FCTTIME.civil}}
+		</div>
+		<img src='{{hour.icon_url}}' alt='{{hour.icon}} icon' class="hourly--icon"/>
+		<div class="hourly--desc">
+			{{hour.wx}}
+		</div>
+		<div class="hourly--temp">
+			{{hour.temp.english}}
+		</div>
 	</div>
 </div>
 {{/each}}

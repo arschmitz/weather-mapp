@@ -1,5 +1,5 @@
 {{#each model.webcams.webcams as |webcam|}}
-<a class="webcam--box display--box col-xs-2" href="{{webcam.CAMURL}}" target="_blank">
+<a class="col-xs-2 webcam--link" href="{{webcam.CAMURL}}" target="_blank">
 	<div class="webcam--title">{{if webcam.linktext webcam.linktext webcam.handle}}</div>
 	<img src="{{webcam.CURRENTIMAGEURL}}" alt="{{webcam.handle}} webcam" class="webcam--image">
 </a>
