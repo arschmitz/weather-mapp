@@ -60,7 +60,7 @@ export default Ember.Route.extend({
       route.pop();
       route = route.join('/');
       route = `${route}/${newRoute}`;
-      if ( !window.location.hash )
+      if ( !window.location.hash ) {
         this.transitionTo(route);
       } else {
         window.location.hash = route;
