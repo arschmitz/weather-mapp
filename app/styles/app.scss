@@ -401,6 +401,26 @@ body {
 	padding: 0;
 }
 
+// View:settings
+.settings {
+	@extend .menu;
+}
+.settings--close {
+	@extend .menu--close;
+}
+.settings--list {
+	@extend .menu--list;
+}
+.settings--item {
+	@extend .menu--item;
+}
+.settings--title {
+	@extend .menu--title;
+}
+.settings--link {
+	@extend .menu--link;
+}
+
 // View:tide
 .tide--box {
 	@extend .box;

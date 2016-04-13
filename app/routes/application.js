@@ -81,6 +81,14 @@ export default Ember.Route.extend({
     closeMenu() {
       this.controllerFor('application').set('menuOpen', false);
     },
+    openSettings() {
+      this.controllerFor('application').set('menuOpen', false);
+      this.controllerFor('application').set('settingsOpen', true);
+    },
+    closeSettings() {
+      this.controllerFor('application').set('menuOpen', true);
+      this.controllerFor('application').set('settingsOpen', false);
+    },
     navigate(newRoute) {
       let loc = window.location
       let route = loc.hash ? loc.hash.split('/') : loc.pathname.split('/');
@@ -96,6 +104,14 @@ export default Ember.Route.extend({
       } else {
         window.location.hash = route;
       }
+    },
+    toggleOWM(owmType) {
+      console.log(arguments);
+      if ( this.controllerFor('application').get(`owm.${owmType}`) ) {
+         this.controllerFor('application').set(`owm.${owmType}`, false);
+         return;
+      }
+      this.controllerFor('application').set(`owm.${owmType}`, true);
     }
   }
 });

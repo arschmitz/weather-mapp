@@ -6,6 +6,18 @@ export default Ember.Controller.extend({
     longititude: -70.185644,
     name: 'Portland, ME'
   },
+  owm: {
+    precipitation: true,
+    clouds: false
+  },
+  owmTypes: [
+    'clouds',
+    'pressure',
+    'rain',
+    'snow',
+    'temperature',
+    'wind'
+  ],
   actions: {
     updateCenter(e) {
       let center = e.target.getCenter();

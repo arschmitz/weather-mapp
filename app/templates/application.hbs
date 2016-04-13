@@ -1,6 +1,26 @@
 {{#leaflet-map class="application--map" zoom="6" onMoveend=(action "updateCenter") lat=userLocation.latitude lng=userLocation.longititude}}
 	{{tile-layer url="http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"}}
+	{{#if owm.clouds}}
+	{{owm-layer "clouds" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.precipitation}}
 	{{owm-layer "precipitation" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.rain}}
+	{{owm-layer "rain" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.snow}}
+	{{owm-layer "snow" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.pressure}}
+	{{owm-layer "pressure" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.temperature}}
+	{{owm-layer "temperature" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
+	{{#if owm.wind}}
+	{{owm-layer "wind" showLegend=true opacity=0.5 baseUrl="http://a.tile.openweathermap.org/map/{layername}/{z}/{x}/{y}.png"}}
+	{{/if}}
 {{/leaflet-map}}
 <h1 class="application--title">Weather MApp</h1>
 {{place-autocomplete-field
@@ -37,6 +57,45 @@
 						{{button.name}}
 					</button>
 				</li>
+			{{/each}}
+			<li class="menu--item">
+				<button class="menu--link" {{action "openSettings"}}>
+					Settings
+				</button>
+			</li>
+		</ul>
+	</div>
+{{/liquid-wormhole}}
+{{/if}}
+{{#if settingsOpen}}
+{{#liquid-wormhole to="application"}}
+	<div class="settings--modal"></div>
+	<div class="settings">
+		<ul class="settings--list">
+			<li class="settings--title">
+				<button {{action "closeSettings"}} class="menu--close">
+					<i class="fa fa-times"></i>
+				</button>
+				Settings
+			</li>
+			<li class="settings--item">
+				<span class="settings--link">
+					Weather Overlay Type
+				</span>
+			</li>
+			<li class="settings--item">
+				<label class="settings--link">
+					<input name="precipitation" type="checkbox" value="precipitation" id="owm-precipitation" {{action "toggleOWM" "precipitation" on="change"}} checked>
+					Precipitation
+				</label>
+			</li>
+			{{#each owmTypes as |type|}}
+			<li class="settings--item">
+				<label class="settings--link">
+					<input name="{{type}}" type="checkbox" value="{{type}}" id="owm-{{type}}" {{action "toggleOWM" type on="change"}}>
+					{{type}}
+				</label>
+			</li>
 			{{/each}}
 		</ul>
 	</div>
