@@ -327,6 +327,52 @@ body {
 	width: 20px;
 }
 
+// View:menu
+.menu--button {
+	@extend .box;
+	width: 40px;
+	height: 40px;
+	text-indent: -9999px;
+	white-space: nowrap;
+}
+.menu {
+	background: #fff;
+	position: fixed;
+	box-shadow: -8px 0 8px rgba(70,70,70,.5);
+	width: 250px;
+	border: none;
+	right: 0;
+	top: 0;
+	margin-bottom: 0;
+	bottom: 0;
+	pointer-events: auto;
+}
+.menu--list {
+	padding: 0;
+	margin: 0;
+}
+.menu--list li {
+	border-bottom: #ccc 1px solid;
+	list-style: none;
+	margin: 0;
+	position: relative;
+}
+.menu--title {
+	@extend .black-title, .logo;
+	font-size: 1.5em;
+	text-align: center;
+}
+.menu--link {
+	padding: .5em;
+	padding-left: 1em;
+	background: none;
+	border: none;
+	display: block;
+	width: 100%;
+	text-align: left;
+	font-size: 1em;
+}
+
 // View:satellite
 .satellite--box {
 	text-align: center;

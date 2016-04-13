@@ -53,22 +53,5 @@ export default Ember.Route.extend({
       geocode: this.store.findRecord('geocode', modelParams.geocodeId)
     });
   },
-  afterModel: geocode,
-  actions: {
-    navigate(newRoute) {
-      location = window.location
-      let route = location.hash ? location.hash.split('/') : location.pathname.split('/');
-      route.pop();
-      if ( location.hash ) {
-        route.shift();
-      }
-      route = route.join('/');
-      route = `${route}/${newRoute}`;
-      if ( !location.hash ) {
-        this.transitionTo(route);
-      } else {
-        window.location.hash = route;
-      }
-    }
-  }
+  afterModel: geocode
 });

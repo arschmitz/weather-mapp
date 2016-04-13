@@ -5,8 +5,9 @@ import geocode from 'arschmitz-weather/utils/route-geocode';
 export default Ember.Route.extend({
   model(params) {
     let modelParams = decode(params);
+    let key = localStorage.apikey || 'e7c863ca90d971b4';
     let imgParams = '&num=8&timelabel=1&smooth=1&borders=1&basemap=1';
-    let imgBase = 'http://api.wunderground.com/api/d32d70d113b63652/';
+    let imgBase = `http://api.wunderground.com/api/${key}/`;
     this.controllerFor('application').set('title', `${modelParams.title} - Satelite Imagry`);
 
     return Ember.RSVP.hash({

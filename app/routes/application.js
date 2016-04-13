@@ -6,10 +6,56 @@ export default Ember.Route.extend({
   setupController() {
     this.controllerFor('application').set('api', localStorage.apikey || '');
     this.controllerFor('application').set('showModal', !!localStorage.apikey);
+    this.controllerFor('application').set('menu', [
+        {
+          name: '3 Day Forecast',
+          model: '3-day-forecast'
+        },
+        {
+          name: '10 Day Forecast',
+          model: '10-day-forecast'
+        },
+        {
+          name: 'Almanac Data',
+          model: 'almanac'
+        },
+        {
+          name: 'Astronomical Data',
+          model: 'astronomy'
+        },
+        {
+          name: 'Current Conditions',
+          model: 'conditions'
+        },
+        {
+          name: 'Dashboard',
+          model: 'dashboard'
+        },
+        {
+          name: 'Hourly',
+          model: 'hourly'
+        },
+        {
+          name: 'Satellite Imagry',
+          model: 'satellite'
+        },
+        {
+          name: 'Tidal Data',
+          model: 'tide'
+        },
+        {
+          name: 'Weather Alerts',
+          model: 'alert'
+        },
+        {
+          name: 'Webcam Imagry',
+          model: 'webcam'
+        }
+      ]);
   },
   actions: {
     placeChanged(val) {
-      // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
+      // jscs:disable requireC  amelCaseOrUpperCaseIdentifiers
       let address = val.address_components;
       let route;
       if (address) {
@@ -28,6 +74,26 @@ export default Ember.Route.extend({
     apiSubmit() {
       localStorage.apikey = this.controllerFor('application').get('api');
       this.controllerFor('application').set('showModal', true);
+    },
+    openMenu() {
+      console.log( "run" );
+      this.controllerFor('application').set('menuOpen', true);
+    },
+    navigate(newRoute) {
+      let loc = window.location
+      let route = loc.hash ? loc.hash.split('/') : loc.pathname.split('/');
+      route.pop();
+      if ( location.hash ) {
+        route.shift();
+      }
+      route = route.join('/');
+      route = `${route}/${newRoute}`;
+      console.log( route );
+      if ( !location.hash ) {
+        this.transitionTo(route);
+      } else {
+        window.location.hash = route;
+      }
     }
   }
 });
