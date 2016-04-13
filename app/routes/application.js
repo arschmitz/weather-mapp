@@ -76,8 +76,10 @@ export default Ember.Route.extend({
       this.controllerFor('application').set('showModal', true);
     },
     openMenu() {
-      console.log( "run" );
       this.controllerFor('application').set('menuOpen', true);
+    },
+    closeMenu() {
+      this.controllerFor('application').set('menuOpen', false);
     },
     navigate(newRoute) {
       let loc = window.location

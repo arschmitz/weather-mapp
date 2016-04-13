@@ -175,7 +175,7 @@ body {
 .application--autocomplete {
 	position: absolute;
 	top: 1em;
-	right: 1em;
+	right: 50px;
 	width: 200px;
 	margin-left: -150px;
 	font-size: $md;
@@ -329,11 +329,12 @@ body {
 
 // View:menu
 .menu--button {
-	@extend .box;
 	width: 40px;
-	height: 40px;
-	text-indent: -9999px;
+	height: 39px;
 	white-space: nowrap;
+	position: absolute;
+	top: 1.4em;
+	right: 1em;
 }
 .menu {
 	background: #fff;
@@ -346,6 +347,15 @@ body {
 	margin-bottom: 0;
 	bottom: 0;
 	pointer-events: auto;
+}
+.menu--close {
+	position: absolute;
+	top: 0em;
+	left: 0em;
+	width: 20px;
+	height: 20px;
+	background: #fff;
+	border: inset #ccc 1px;
 }
 .menu--list {
 	padding: 0;

@@ -17,15 +17,20 @@
 		<div class="col-xs-12"><h1 class="display--title">{{title}}</h1></div>
 	</div>
 	{{liquid-outlet class="row around-xs" containerless=true}}
-	<!-- coming soon <button {{action "openMenu"}} class="menu--button"><i class="fa fa-bars"></i></button> -->
 </div>
+<button {{action "openMenu"}} class="menu--button"><i class="fa fa-bars"></i></button>
 {{log model}}
 {{#if menuOpen}}
 {{#liquid-wormhole to="application"}}
 	<div class="menu--modal"></div>
 	<div class="menu">
 		<ul class="menu--list">
-			<li class="menu--title">Weather MApp</li>
+			<li class="menu--title">
+				<button {{action "closeMenu"}} class="menu--close">
+					<i class="fa fa-times"></i>
+				</button>
+				Weather MApp
+			</li>
 			{{#each menu as |button|}}
 				<li class="menu--item">
 					<button class="menu--link" {{action "navigate" button.model}}>
