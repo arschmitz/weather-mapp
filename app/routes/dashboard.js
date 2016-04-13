@@ -59,6 +59,7 @@ export default Ember.Route.extend({
       let route = window.location.pathname.split('/');
       route.pop();
       route = route.join('/');
+      console.log(`${route}/${newRoute}`);
       this.transitionTo(`${route}/${newRoute}`);
     }
   }
