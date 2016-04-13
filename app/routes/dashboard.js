@@ -56,11 +56,15 @@ export default Ember.Route.extend({
   afterModel: geocode,
   actions: {
     navigate(newRoute) {
-      let route = window.location.pathname.split('/');
+      location = window.location
+      let route = location.hash ? location.hash.split('/') : location.pathname.split('/');
       route.pop();
+      if ( location.hash ) {
+        route.shift();
+      }
       route = route.join('/');
       route = `${route}/${newRoute}`;
-      if ( !window.location.hash ) {
+      if ( !location.hash ) {
         this.transitionTo(route);
       } else {
         window.location.hash = route;
