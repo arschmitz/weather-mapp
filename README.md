@@ -1,7 +1,6 @@
-# Arschmitz-weather
+# Weather MApp
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This repo is an expiramental POC of a map based weather app that uses geocoding and an interactive map to display weather data to users. This app can be found at http://weather.arschmitz.me. Follow the directions below to run this application locally.
 
 ## Prerequisites
 

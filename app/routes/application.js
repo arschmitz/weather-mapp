@@ -36,6 +36,10 @@ export default Ember.Route.extend({
           model: 'hourly'
         },
         {
+          name: 'Map View',
+          model: 'map'
+        },
+        {
           name: 'Satellite Imagry',
           model: 'satellite'
         },

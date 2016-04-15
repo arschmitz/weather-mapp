@@ -15,7 +15,8 @@ Router.map(function() {
     'condition',
     'astronomy',
     'almanac',
-    'alert'
+    'alert',
+    'map'
   ];
   routes.forEach((route) => {
     this.route(route, { path: `/forecast/:country/:state/${route}` });

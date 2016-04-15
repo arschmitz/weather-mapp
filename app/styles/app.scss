@@ -383,6 +383,17 @@ body {
 	font-size: 1em;
 }
 
+// View:map
+.map--pointer {
+	width: 30px;
+	height: 38px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: -19px;
+}
+
 // View:satellite
 .satellite--box {
 	text-align: center;
@@ -465,6 +476,7 @@ body {
 	padding: 2em;
 	font-size: $sm;
 	box-shadow: 15px 15px 7px $tBlack;
+	margin-top: 2em;
 	margin-right: 2em;
 	margin-left: 2em;
 }
