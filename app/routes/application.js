@@ -59,7 +59,7 @@ export default Ember.Route.extend({
   },
   actions: {
     placeChanged(val) {
-      // jscs:disable requireC  amelCaseOrUpperCaseIdentifiers
+      // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
       let address = val.address_components;
       let route;
       if (address) {
@@ -94,26 +94,24 @@ export default Ember.Route.extend({
       this.controllerFor('application').set('settingsOpen', false);
     },
     navigate(newRoute) {
-      let loc = window.location
+      let loc = window.location;
       let route = loc.hash ? loc.hash.split('/') : loc.pathname.split('/');
       route.pop();
-      if ( location.hash ) {
+      if (location.hash) {
         route.shift();
       }
       route = route.join('/');
       route = `${route}/${newRoute}`;
-      console.log( route );
-      if ( !location.hash ) {
+      if (!location.hash) {
         this.transitionTo(route);
       } else {
         window.location.hash = route;
       }
     },
     toggleOWM(owmType) {
-      console.log(arguments);
-      if ( this.controllerFor('application').get(`owm.${owmType}`) ) {
-         this.controllerFor('application').set(`owm.${owmType}`, false);
-         return;
+      if (this.controllerFor('application').get(`owm.${owmType}`)) {
+        this.controllerFor('application').set(`owm.${owmType}`, false);
+        return;
       }
       this.controllerFor('application').set(`owm.${owmType}`, true);
     }
