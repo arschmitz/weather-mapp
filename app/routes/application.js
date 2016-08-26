@@ -101,12 +101,10 @@ export default Ember.Route.extend({
         route.shift();
       }
       route = route.join('/');
-      route = `${route}/${newRoute}`;
-      if (!location.hash) {
-        this.transitionTo(route);
-      } else {
-        window.location.hash = route;
-      }
+      route = `/${route}/${newRoute}`;
+      console.log( route );
+      console.log( location.hash )
+      window.location.hash = route;
     },
     toggleOWM(owmType) {
       if (this.controllerFor('application').get(`owm.${owmType}`)) {

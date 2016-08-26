@@ -5,7 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'arschmitz-weather',
     environment: environment,
     baseURL: '/',
-    locationType: 'auto',
+    locationType: 'hash',
     'place-autocomplete': {
       key: 'AIzaSyDfTTzdATICqXXPlxaE_DloV1k085FeVPA'
     },
@@ -23,17 +23,19 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.locationType = 'hash';
   }
 
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
-    ENV.locationType = 'none';
+    ENV.locationType = 'hash';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
