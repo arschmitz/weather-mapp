@@ -10,6 +10,7 @@ You will need the following things properly installed on your computer.
 * [Node.js](http://nodejs.org/) (with NPM)
 * [Bower](http://bower.io/)
 * [Ember CLI](http://ember-cli.com/)
+* [Xcode](https://developer.apple.com/xcode/downloads/)
 * [PhantomJS](http://phantomjs.org/)
 
 ## Installation
@@ -23,6 +24,17 @@ You will need the following things properly installed on your computer.
 
 * `ember server`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
+
+## Running as a native app
+
+* `ember cdv:build` to build the app
+* To run on actual device
+	* `ember cdv open --platform=iso`
+	* When Xcode opens at top select your device and click play button
+	* go through steps to create a provisioning profile
+	* `ember cdv run` while phone is plugged in to deploy to phone
+* `ember cdv run` to open in simulator
+
 
 ### Code Generators
 
